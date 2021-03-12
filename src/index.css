@@ -51,10 +51,8 @@ h1 {
 
 .form-control input {
   outline: none;
-  /* border: 1px solid #6dabe5; */
   border: none;
   border-bottom: 1px solid #6dabe5;
-  /* border-radius: 10px; */
   padding: 0.75rem;
   font-size: 1rem;
 }
