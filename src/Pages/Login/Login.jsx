@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LoginRegisterForm from '../../Components/LoginRegisterForm';
+import LoginForm from '../../components/LoginForm';
 
 function LoginPage() {
     return (
@@ -8,7 +8,7 @@ function LoginPage() {
             <main>
                 <div className="content-container">
                     <h2>Login</h2>
-                    <LoginRegisterForm onSubmit={handleLoginSubmit} />
+                    <LoginForm onSubmit={handleLoginSubmit} />
                 </div>
             </main>
         </div>
@@ -38,6 +38,7 @@ async function handleLoginSubmit({ email, password }) {
             throw data.error;
         }
     } catch (err) {
+        // put error toast here
         console.log({ err })
         debugger
     }

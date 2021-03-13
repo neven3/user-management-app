@@ -1,11 +1,15 @@
 import React from 'react';
-import { LoginPage } from './Pages';
+// import { LoginPage, MainPage } from './pages';
+import { MainPage } from './pages';
 
 function App() {
+  // currentPage
+
   return (
     <div>
       <h1>User Management App</h1>
-      <LoginPage />
+      {/* <LoginPage /> */}
+      <MainPage />
     </div>
   );
 }
