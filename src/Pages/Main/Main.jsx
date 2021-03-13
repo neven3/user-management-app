@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
+import { connect } from 'react-redux';
 
 import CreateNewUserForm from '../../components/CreateNewUserForm';
 import getUsers from '../../services/getUsers';
 import createNewUser from '../../services/createNewUser';
 
+import { openModal, closeModal } from '../../redux/modal/modalActions';
+
 function MainPage(props) {
+    const { isModalOpen, openModal, closeModal } = props;
     const START_SEARCH_FROM = 2;
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [searchBarValue, setSearchBarValue] = useState('');
     const [userList, setUserList] = useState([]);
     const usersListRef = useRef(null);
@@ -60,10 +63,10 @@ function MainPage(props) {
                         id="search"
                         value={searchBarValue}
                     />
-                    <button onClick={() => setIsModalOpen(true)}>+ Add new user</button>
+                    <button onClick={openModal}>+ Add new user</button>
                     <Modal
                         isOpen={isModalOpen}
-                        onRequestClose={() => setIsModalOpen(false)}
+                        onRequestClose={closeModal}
                     >
                         <CreateNewUserForm onSubmit={async (values) => {
                             try {
@@ -78,7 +81,7 @@ function MainPage(props) {
                                 };
 
                                 setUserList([...userList, newUser]);
-                                setIsModalOpen(false);
+                                closeModal();
                             } catch (err) {
                                 console.log({ err })
                                 debugger
@@ -112,4 +115,17 @@ function MainPage(props) {
     );
 }
 
-export default MainPage;
+const mapStateToProps = (state) => {
+    return {
+        isModalOpen: state.isModalOpen
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        openModal: () => dispatch(openModal()),
+        closeModal: () => dispatch(closeModal())
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
