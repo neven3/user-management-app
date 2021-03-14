@@ -1,6 +1,15 @@
-import { createStore } from 'redux';
-import modalReducer from './modal/modalReducer';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-const store = createStore(modalReducer);
+import modalReducer from './modal/modalReducer';
+import userReducer from './user/userReducer';
+
+const store = createStore(
+    combineReducers({
+        modal: modalReducer,
+        user: userReducer
+    }),
+    applyMiddleware(thunk)
+);
 
 export default store;

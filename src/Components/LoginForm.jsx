@@ -1,8 +1,10 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
-import FormValidationMessage from './FormValidationMessage';
+import FormControl from './FormControl';
+
+// todo: prop-types
 
 function LoginForm(props) {
     const { onSubmit } = props;
@@ -28,24 +30,16 @@ function LoginForm(props) {
             validationSchema={validationSchema}
         >
             <Form>
-                <div className="form-control">
-                    <label htmlFor="email">E-mail</label>
-                    <Field
-                        type="text"
-                        name="email"
-                        id="email"
-                    />
-                    <ErrorMessage name="email" component={FormValidationMessage} />
-                </div>
-                <div className="form-control">
-                    <label htmlFor="password">Password</label>
-                    <Field
-                        type="password"
-                        name="password"
-                        id="password"
-                    />
-                    <ErrorMessage name="password" component={FormValidationMessage} />
-                </div>
+                <FormControl
+                    type="text"
+                    name="email"
+                    label="E-mail"
+                />
+                <FormControl
+                    type="password"
+                    name="password"
+                    label="Password"
+                />
                 <button className="submit-btn" type="submit">Login</button>
             </Form>
         </Formik>
