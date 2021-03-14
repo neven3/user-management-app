@@ -19,15 +19,17 @@ function CreateNewUserModal(props) {
             onRequestClose={closeModal}
         >
             <button className="close-modal-btn" onClick={closeModal}>X</button>
-            <CreateNewUserForm onSubmit={(values) => {
-                try {
-                    createUser(values);
-                    closeModal();
-                } catch (err) {
-                    console.log({ err })
-                    debugger
-                }
-            }} />
+            <CreateNewUserForm
+                onSubmit={(values) => {
+                    try {
+                        createUser(values);
+                        closeModal();
+                    } catch (err) {
+                        console.log({ err })
+                        debugger
+                    }
+                }}
+            />
         </Modal>
     );
 }

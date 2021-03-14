@@ -20,7 +20,6 @@ export function addUser(user) {
 }
 
 export function loginUser() {
-    debugger
     return {
         type: LOGIN_USER
     };

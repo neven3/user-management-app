@@ -39,7 +39,6 @@ function userReducer(state = initialUsersState, action) {
                 userList: [...state.userList, newUser]
             };
         case LOGIN_USER:
-            debugger
             return {
                 ...state,
                 isLoggedIn: true

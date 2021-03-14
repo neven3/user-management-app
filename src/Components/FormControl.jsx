@@ -6,6 +6,7 @@ import FormValidationMessage from './FormValidationMessage';
 
 function FormControl(props) {
     const { type, label, name } = props;
+
     return (
         <div className="form-control">
             <label htmlFor="email">{label}</label>
