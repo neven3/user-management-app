@@ -1,6 +1,5 @@
 import React from 'react';
-
-// todo: prop-types
+import PropTypes from 'prop-types';
 
 function UserCard(props) {
     const { first_name, last_name, avatar } = props.user;
@@ -16,5 +15,13 @@ function UserCard(props) {
         </div>
     );
 }
+
+UserCard.propTypes = {
+    user: PropTypes.shape({
+        first_name: PropTypes.string.isRequired,
+        last_name: PropTypes.string.isRequired,
+        avatar: PropTypes.string.isRequired
+    }).isRequired
+};
 
 export default UserCard;

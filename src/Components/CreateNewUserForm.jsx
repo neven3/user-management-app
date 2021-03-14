@@ -1,10 +1,9 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 
 import FormControl from './FormControl';
-
-// todo: prop types
 
 function CreateNewUserForm(props) {
     const { onSubmit } = props;
@@ -63,5 +62,9 @@ function CreateNewUserForm(props) {
         </Formik>
     );
 }
+
+CreateNewUserForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+};
 
 export default CreateNewUserForm;

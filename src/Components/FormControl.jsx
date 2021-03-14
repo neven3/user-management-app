@@ -1,9 +1,8 @@
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
+import PropTypes from 'prop-types';
 
 import FormValidationMessage from './FormValidationMessage';
-
-// todo: prop-types
 
 function FormControl(props) {
     const { type, label, name } = props;
@@ -21,5 +20,11 @@ function FormControl(props) {
         </div>
     );
 }
+
+FormControl.propTypes = {
+    type: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+};
 
 export default FormControl;

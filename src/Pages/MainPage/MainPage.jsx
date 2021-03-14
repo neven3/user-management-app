@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import UserCard from '../../components/UserCard';
 import CreateNewUserModal from '../../components/CreateNewUserModal';
 import { openModal, closeModal } from '../../redux/modal/modalActions';
 import { createUser, fetchUsers } from '../../redux/user/userActions';
-
-// todo: prop-types
-// todo: styling
 
 function MainPage(props) {
     const { isModalOpen, openModal, closeModal, userList, fetchUsers, createUser, isLoggedIn } = props;
@@ -21,6 +19,7 @@ function MainPage(props) {
             console.log({ err })
             debugger
         }
+        // eslint-disable-next-line
     }, [searchBarValue])
 
     if (!isLoggedIn) {
@@ -62,6 +61,21 @@ function MainPage(props) {
         </div >
     );
 }
+
+MainPage.propTypes = {
+    isModalOpen: PropTypes.bool.isRequired,
+    openModal: PropTypes.func.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    userList: PropTypes.arrayOf(PropTypes.shape({
+        first_name: PropTypes.string,
+        last_name: PropTypes.string,
+        email: PropTypes.string,
+        avatar: PropTypes.string
+    })).isRequired,
+    fetchUsers: PropTypes.func.isRequired,
+    createUser: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = (state) => {
     return {

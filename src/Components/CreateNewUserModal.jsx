@@ -1,9 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
+import PropTypes from 'prop-types';
 
 import CreateNewUserForm from './CreateNewUserForm';
 
-// todo: prop-types
 // todo: error handling
 
 function CreateNewUserModal(props) {
@@ -31,5 +31,11 @@ function CreateNewUserModal(props) {
         </Modal>
     );
 }
+
+CreateNewUserModal.propTypes = {
+    isModalOpen: PropTypes.bool.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    createUser: PropTypes.func.isRequired
+};
 
 export default CreateNewUserModal;

@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { handleLogout } from '../redux/user/userActions';
-
-// todo: prop-types
 
 function Navigation(props) {
     const { isLoggedIn, handleLogout } = props;
@@ -23,6 +22,11 @@ function Navigation(props) {
         </nav>
     );
 }
+
+Navigation.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+    handleLogout: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => {
     return {

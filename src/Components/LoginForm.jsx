@@ -1,10 +1,9 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 
 import FormControl from './FormControl';
-
-// todo: prop-types
 
 function LoginForm(props) {
     const { onSubmit } = props;
@@ -45,5 +44,9 @@ function LoginForm(props) {
         </Formik>
     );
 }
+
+LoginForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+};
 
 export default LoginForm;

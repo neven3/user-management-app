@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import LoginForm from '../../components/LoginForm';
 import { handleLogin } from '../../redux/user/userActions';
-
-// todo: prop-types
 
 function LoginPage(props) {
     const { isLoggedIn, handleLogin } = props;
@@ -25,6 +24,11 @@ function LoginPage(props) {
         </div>
     );
 }
+
+LoginPage.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+    handleLogin: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => {
     return {

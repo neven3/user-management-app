@@ -4,7 +4,7 @@ import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER } from './userTypes';
 
 const initialUsersState = {
     userList: [],
-    isLoggedIn: localStorage.getItem('userToken')
+    isLoggedIn: Boolean(localStorage.getItem('userToken'))
 };
 
 function userReducer(state = initialUsersState, action) {
