@@ -2,23 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import UserCard from '../../components/UserCard';
-import CreateNewUserModal from '../../components/CreateNewUserModal';
-import { openModal, closeModal } from '../../redux/modal/modalActions';
-import { createUser, fetchUsers } from '../../redux/user/userActions';
+import UserCard from '../components/UserCard';
+import CreateNewUserModal from '../components/CreateNewUserModal';
+import { openModal, closeModal } from '../redux/modal/modalActions';
+import { createUser, fetchUsers } from '../redux/user/userActions';
 
 function MainPage(props) {
     const { isModalOpen, openModal, closeModal, userList, fetchUsers, createUser, isLoggedIn } = props;
     const [searchBarValue, setSearchBarValue] = useState('');
 
     useEffect(() => {
-        try {
-            fetchUsers(searchBarValue);
-        } catch (err) {
-            console.log({ err })
-            debugger
-        }
+        fetchUsers(searchBarValue);
         // eslint-disable-next-line
     }, [searchBarValue])
 
@@ -57,6 +54,10 @@ function MainPage(props) {
                             : <div>No users</div>
                     }
                 </div>
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                />
             </main>
         </div >
     );

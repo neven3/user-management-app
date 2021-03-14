@@ -1,9 +1,8 @@
-import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER } from './userTypes';
-import getUsers from '../../services/getUsers';
-import createNewUser from '../../services/createNewUser';
-import login from '../../services/login';
+import { toast } from 'react-toastify';
 
-// todo: error handling
+import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER } from './userTypes';
+import { login, getUsers, createNewUser } from '../../services';
+import { closeModal } from '../modal/modalActions';
 
 export function setUsers({ users, filter }) {
     return {
@@ -45,9 +44,7 @@ export function handleLogin(credentials) {
             localStorage.setItem('userToken', token);
             dispatch(loginUser());
         } catch (err) {
-            console.log({ err });
-            debugger
-            throw err;
+            toast.error(`Error logging in: ${err}`);
         }
     };
 }
@@ -57,10 +54,10 @@ export function createUser(userValues) {
         try {
             const newUser = await createNewUser(userValues);
             dispatch(addUser(newUser));
+            toast.success('Successfully created new user');
+            dispatch(closeModal());
         } catch (err) {
-            console.log(err)
-            debugger
-            throw err;
+            toast.error(`Error creating new user: ${err.message}`);
         }
     };
 }
@@ -71,8 +68,7 @@ export function fetchUsers(filter) {
             const users = await getUsers();
             dispatch(setUsers({ users, filter }));
         } catch (err) {
-            console.log({ err })
-            debugger
+            toast.error(`Error fetching users: ${err.message}`);
             throw err;
         }
     };

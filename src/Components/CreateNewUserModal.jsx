@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 import CreateNewUserForm from './CreateNewUserForm';
 
-// todo: error handling
-
 function CreateNewUserModal(props) {
     const { isModalOpen, closeModal, createUser } = props;
 
@@ -19,17 +17,7 @@ function CreateNewUserModal(props) {
             onRequestClose={closeModal}
         >
             <button className="close-modal-btn" onClick={closeModal}>X</button>
-            <CreateNewUserForm
-                onSubmit={(values) => {
-                    try {
-                        createUser(values);
-                        closeModal();
-                    } catch (err) {
-                        console.log({ err })
-                        debugger
-                    }
-                }}
-            />
+            <CreateNewUserForm onSubmit={(values) => { createUser(values) }} />
         </Modal>
     );
 }

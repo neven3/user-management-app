@@ -7,6 +7,7 @@ async function createNewUser(body) {
     if (!bodyCopy.avatar) {
         bodyCopy.avatar = defaultImageUrl;
     }
+
     const response = await fetch(createNewUserUrl, {
         method: 'POST',
         headers: {

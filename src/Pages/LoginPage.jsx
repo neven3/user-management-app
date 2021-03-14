@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import LoginForm from '../../components/LoginForm';
-import { handleLogin } from '../../redux/user/userActions';
+import LoginForm from '../components/LoginForm';
+import { handleLogin } from '../redux/user/userActions';
 
 function LoginPage(props) {
     const { isLoggedIn, handleLogin } = props;
@@ -20,6 +22,10 @@ function LoginPage(props) {
                     <h2>Login</h2>
                     <LoginForm onSubmit={handleLogin} />
                 </div>
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                />
             </main>
         </div>
     );
