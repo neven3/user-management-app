@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-import UserCard from '../components/UserCard';
 import CreateNewUserModal from '../components/CreateNewUserModal';
+import UserList from '../components/UserList';
 import { openModal, closeModal } from '../redux/modal/modalActions';
 import { createUser, fetchUsers } from '../redux/user/userActions';
 
@@ -45,18 +43,9 @@ function MainPage(props) {
                     </button>
                     <CreateNewUserModal {...{ isModalOpen, closeModal, createUser }} />
                 </div>
-                <div className="user-list">
-                    {
-                        userList.length > 0
-                            ? userList.map(user => {
-                                return <UserCard user={user} key={user.id} />
-                            })
-                            : <div>No users</div>
-                    }
-                </div>
-                <ToastContainer
-                    position="bottom-right"
-                    autoClose={3000}
+                <UserList
+                    userList={userList}
+                    emptyState={userList.length === 0}
                 />
             </main>
         </div >

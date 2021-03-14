@@ -237,7 +237,7 @@ main {
   }
 }
 
-/* tablets */
+/* Tablets */
 @media screen
   and (min-width: 401px)
   and (max-width: 800px) {
@@ -246,7 +246,7 @@ main {
   }
 }
 
-/* Cell phones Landscape */
+/* Cell phones landscape */
 @media screen 
   and (max-height: 450px) 
   and (orientation: landscape) {
@@ -289,7 +289,7 @@ main {
     }
 }
 
-/* laptops */
+/* Laptops */
 @media screen and (min-width: 800px) {
   .modal form {
     padding: 2rem 4rem;

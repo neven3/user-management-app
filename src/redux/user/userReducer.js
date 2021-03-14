@@ -1,6 +1,5 @@
 import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER } from './userTypes';
-
-// todo: extract filter callback
+import { checkIfStringsIncludeFilter } from '../../utils';
 
 const initialUsersState = {
     userList: [],
@@ -14,11 +13,10 @@ function userReducer(state = initialUsersState, action) {
 
             if (filter.length >= 2) {
                 const filteredUserList = users.filter(user => {
-                    return (
-                        user.first_name.toLowerCase().includes(filter.toLowerCase())
-                        || user.last_name.toLowerCase().includes(filter.toLowerCase())
-                        || `${user.first_name} ${user.last_name}`.toLowerCase().includes(filter.toLowerCase())
-                    );
+                    const { first_name, last_name } = user;
+                    const wholeName = `${first_name} ${last_name}`;
+
+                    return checkIfStringsIncludeFilter(filter, first_name, last_name, wholeName);
                 });
 
                 return {
@@ -36,7 +34,7 @@ function userReducer(state = initialUsersState, action) {
 
             return {
                 ...state,
-                userList: [...state.userList, newUser]
+                userList: [newUser, ...state.userList]
             };
         case LOGIN_USER:
             return {
