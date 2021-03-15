@@ -13,6 +13,10 @@ code {
     monospace;
 }
 
+button {
+  cursor: pointer;
+}
+
 nav {
   text-align: center;
   position: absolute;
@@ -179,6 +183,10 @@ main {
   border: none;
 }
 
+.close-modal-btn:hover {
+  background-color: lightcoral;
+}
+
 .logout-btn {
   float: right;
   text-decoration: none;
@@ -201,6 +209,20 @@ main {
 .logout-btn a:visited {
   color: inherit;
   text-decoration: none;
+}
+
+.img-container {
+  width: 200px;
+  height: 200px;
+  margin: 0.5rem auto;
+}
+
+.add-image-btn {
+  width: 100%;
+  border: 2px dashed #6dabe5;
+  background-color: white;
+  padding: 0.5rem;
+  font-family: inherit;
 }
 
 /* Cell phones portrait */
@@ -273,11 +295,13 @@ main {
 
     .modal {
       width: 80%;
+      overflow: scroll;
       height: 80vh;
     }
 
     .modal .form-control {
       justify-content: flex-start;
+      margin: 0;
     }
 
     .modal .form-control label {
@@ -286,6 +310,10 @@ main {
 
     .modal .form-control .input-container {
       width: 60%;
+    }
+
+    .add-image-btn {
+      margin-top: 0.5rem;
     }
 }
 

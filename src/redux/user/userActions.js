@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER } from './userTypes';
+import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER, SET_PREVIEW_IMAGE } from './userTypes';
 import { login, getUsers, createNewUser } from '../../services';
 import { closeModal } from '../modal/modalActions';
 
@@ -8,6 +8,13 @@ export function setUsers({ users, filter }) {
     return {
         type: SET_USERS,
         payload: { users, filter }
+    };
+}
+
+export function setPreviewImage(image) {
+    return {
+        type: SET_PREVIEW_IMAGE,
+        payload: image
     };
 }
 

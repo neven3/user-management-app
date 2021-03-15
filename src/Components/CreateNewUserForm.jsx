@@ -2,11 +2,14 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import FormControl from './FormControl';
+import ImagePreview from './ImagePreview';
 
 function CreateNewUserForm(props) {
-    const { onSubmit } = props;
+    const { onSubmit, previewImage } = props;
+
     const initialValues = {
         email: '',
         first_name: '',
@@ -52,11 +55,12 @@ function CreateNewUserForm(props) {
                     name="email"
                     label="E-mail"
                 />
-                <FormControl
+                {!previewImage && (<FormControl
                     type="text"
                     name="avatar"
                     label="Avatar URL"
-                />
+                />)}
+                <ImagePreview />
                 <button className="submit-btn" type="submit">Create User</button>
             </Form>
         </Formik>
@@ -67,4 +71,12 @@ CreateNewUserForm.propTypes = {
     onSubmit: PropTypes.func.isRequired
 };
 
-export default CreateNewUserForm;
+const mapStateToProps = (state) => {
+    return {
+        previewImage: state.user.previewImage
+    };
+}
+
+export default connect(mapStateToProps, null)(CreateNewUserForm);
+
+// export default CreateNewUserForm;

@@ -1,9 +1,10 @@
-import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER } from './userTypes';
+import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER, SET_PREVIEW_IMAGE } from './userTypes';
 import { checkIfStringsIncludeFilter } from '../../utils';
 
 const initialUsersState = {
     userList: [],
-    isLoggedIn: Boolean(localStorage.getItem('userToken'))
+    isLoggedIn: Boolean(localStorage.getItem('userToken')),
+    previewImage: null
 };
 
 function userReducer(state = initialUsersState, action) {
@@ -45,6 +46,13 @@ function userReducer(state = initialUsersState, action) {
             return {
                 ...state,
                 isLoggedIn: false
+            };
+        case SET_PREVIEW_IMAGE:
+            const previewImage = action.payload;
+
+            return {
+                ...state,
+                previewImage
             };
         default:
             return {
