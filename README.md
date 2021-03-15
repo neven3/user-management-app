@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# User Management Demo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Libraries used
+- **React**
+- **Redux** for state management
+- **React Toastify** for request error handling
+- **Redux Thunk** for asynchronous operations
+- **Formik** for form handling
+- **Yup** for form validation
+- **Cropper** for image cropping
+- **React-Modal** for the create-new-user modal/form
+- **prop-types**
 
-## Available Scripts
+## Functionalities
 
-In the project directory, you can run:
+### Login screen
+Contains a simple login form with e-mail and password fields. Both fields are validated when blurred. An unsuccessful login attempt displays a toast with an error message, while a successful login attempt redirects to the main page. The token received in the response is saved in `localStorage`, as well as information that the user is logged in. If a user is logged in or there is a token saved in `localStorage`, attempts to get to the login screen will be automatically redirected to the main screen. Likewise, if a user is not logged in and there is not a token in `localStorage`, every attempt to access the main screen will redirect to the login screen. The `isLoggedIn` state changes when the user clicks the Logout button on the main screen, which also deletes the token from `localStorage`.
 
-### `yarn start`
+### Main screen
+The list of users from https://reqres.in/ is immediately shown when entering the main screen. The search bar automatically filters the users in the list. Since the API does not allow filtering the list, and I wanted it to mimic a real-world scenario where there would be an API call for every key change, the code fetches the entire list every time and performs the filtering on the frontend. The filtering starts with the second character as per instructions. When creating a new user the user gets added to `createdUsersList` in `localStorage`, so it doesn't get lost when filtering the list. Upon fetching the list, the created users list (from `localStorage`) then gets combined with the list of fetched users.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Create-new-user modal
+Clicking the 'Add user' button opens a modal with the create-new-users form. The 'Avatar URL' field is not required, but exepcts only valid URLs. The form also includes the image upload/resize input. The image is not uploaded anywhere, nor is it used when a user is created. If a link is not provided to the 'Avatar URL' field, the user will be automatically given an avatar with the photo of a famous Croatian actor and martial artist. The form has validation and error handling (with success or error toast messages).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Notes
+- The design is responsive
+- The demo was created using exclusively function components
+- All or almost all input elements have their state managed locally using the `useState` hook. Here I went by what the authors of Formik and Dan Abramov say about the location of form state (https://formik.org/docs/overview#why-not-redux-form).
+- I did not export/import components from a single `index.js` file, because each component requires only one or two other components. And getting them from the same folder, but having to go back a step and then enter the same folder seemed unnecessary for this kind of application/demo. 
+- Since there are only two bigger components holding all of the others, I decided to leave all the styling in one file - the `index.css` file. But the file is getting too big and somewhat out of hand and should be compartmentalized by components.

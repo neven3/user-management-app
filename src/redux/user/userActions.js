@@ -84,7 +84,6 @@ export function fetchUsers(filter) {
             dispatch(setUsers({ users, filter }));
         } catch (err) {
             toast.error(`Error fetching users: ${err.message}`);
-            throw err;
         }
     };
 }
