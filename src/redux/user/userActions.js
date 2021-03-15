@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify';
 
 import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER, SET_PREVIEW_IMAGE } from './userTypes';
-import { login, getUsers, createNewUser } from '../../services';
+import { login, getUsers, createNewUser } from '../../Services';
 import { closeModal } from '../modal/modalActions';
-import { saveUserToLocalStorage } from '../../utils';
+import { saveUserToLocalStorage } from '../../Utils';
 
 export function setUsers({ users, filter }) {
     return {

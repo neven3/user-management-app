@@ -3,10 +3,10 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import CreateNewUserModal from '../components/CreateNewUserModal';
-import UserList from '../components/UserList';
-import { openModal, closeModal } from '../redux/modal/modalActions';
-import { createUser, fetchUsers } from '../redux/user/userActions';
+import CreateNewUserModal from '../Components/CreateNewUserModal';
+import UserList from '../Components/UserList';
+import { openModal, closeModal } from '../Redux/modal/modalActions';
+import { createUser, fetchUsers } from '../Redux/user/userActions';
 
 function MainPage(props) {
     const { isModalOpen, openModal, closeModal, userList, fetchUsers, createUser, isLoggedIn } = props;

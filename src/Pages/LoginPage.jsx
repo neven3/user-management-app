@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import LoginForm from '../components/LoginForm';
-import { handleLogin } from '../redux/user/userActions';
+import LoginForm from '../Components/LoginForm';
+import { handleLogin } from '../Redux/user/userActions';
 
 function LoginPage(props) {
     const { isLoggedIn, handleLogin } = props;

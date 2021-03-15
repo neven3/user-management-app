@@ -4,9 +4,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Navigation from './components/Navigation';
-import { LoginPage, MainPage } from './pages';
-import store from './redux/store';
+import Navigation from './Components/Navigation';
+import { LoginPage, MainPage } from './Pages';
+import store from './Redux/store';
 
 function App() {
 

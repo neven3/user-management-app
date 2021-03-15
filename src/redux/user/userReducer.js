@@ -1,5 +1,5 @@
 import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER, SET_PREVIEW_IMAGE } from './userTypes';
-import { checkIfStringsIncludeFilter } from '../../utils';
+import { checkIfStringsIncludeFilter } from '../../Utils';
 
 const initialUsersState = {
     userList: [],

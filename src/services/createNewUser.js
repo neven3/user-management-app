@@ -1,4 +1,4 @@
-import { defaultImageUrl } from '../constants';
+import { defaultImageUrl } from '../Constants';
 
 const createNewUserUrl = 'https://reqres.in/api/users';
 

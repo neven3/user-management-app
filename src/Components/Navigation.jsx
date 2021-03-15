@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { handleLogout } from '../redux/user/userActions';
+import { handleLogout } from '../Redux/user/userActions';
 
 function Navigation(props) {
     const { isLoggedIn, handleLogout } = props;

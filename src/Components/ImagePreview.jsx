@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import ImageCropper from './ImageCropper';
 import AddRemoveImageButton from './AddRemoveImageButton';
-import { setPreviewImage } from '../redux/user/userActions';
+import { setPreviewImage } from '../Redux/user/userActions';
 
 function ImageFileInput(props) {
     const { previewImage, setPreviewImage } = props;
