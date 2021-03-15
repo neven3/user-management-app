@@ -35,7 +35,7 @@ function userReducer(state = initialUsersState, action) {
 
             return {
                 ...state,
-                userList: [newUser, ...state.userList]
+                userList: [...state.userList, newUser]
             };
         case LOGIN_USER:
             return {

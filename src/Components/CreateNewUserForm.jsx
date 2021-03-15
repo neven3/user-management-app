@@ -68,7 +68,8 @@ function CreateNewUserForm(props) {
 }
 
 CreateNewUserForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    previewImage: PropTypes.string
 };
 
 const mapStateToProps = (state) => {
@@ -78,5 +79,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, null)(CreateNewUserForm);
-
-// export default CreateNewUserForm;

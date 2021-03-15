@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { SET_USERS, ADD_USER, LOGIN_USER, LOGOUT_USER, SET_PREVIEW_IMAGE } from './userTypes';
 import { login, getUsers, createNewUser } from '../../services';
 import { closeModal } from '../modal/modalActions';
+import { saveUserToLocalStorage } from '../../utils';
 
 export function setUsers({ users, filter }) {
     return {
@@ -60,6 +61,7 @@ export function createUser(userValues) {
     return async (dispatch) => {
         try {
             const newUser = await createNewUser(userValues);
+            saveUserToLocalStorage(newUser);
             dispatch(addUser(newUser));
             toast.success('Successfully created new user');
             dispatch(closeModal());
@@ -73,6 +75,12 @@ export function fetchUsers(filter) {
     return async (dispatch) => {
         try {
             const users = await getUsers();
+            const locallyCreatedUsers = JSON.parse(localStorage.getItem('createdUsersList'));
+
+            if (locallyCreatedUsers) {
+                users.push(...locallyCreatedUsers);
+            }
+
             dispatch(setUsers({ users, filter }));
         } catch (err) {
             toast.error(`Error fetching users: ${err.message}`);

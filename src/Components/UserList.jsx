@@ -7,15 +7,15 @@ function UserList(props) {
     const { userList, emptyState } = props;
 
     return (
-        <div className="user-list">
-            {!emptyState ? (
-                userList.map(user => (
+        !emptyState ? (
+            <div className="user-list">
+                {userList.map(user => (
                     <UserCard user={user} key={user.id} />
-                ))
-            ) : (
-                <div>No users</div>
-            )}
-        </div>
+                ))}
+            </div>
+        ) : (
+            <div className="user-list-empty-state">No users</div>
+        )
     );
 }
 

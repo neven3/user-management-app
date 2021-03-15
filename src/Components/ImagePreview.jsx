@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import ImageCropper from './ImageCropper';
+import AddRemoveImageButton from './AddRemoveImageButton';
 import { setPreviewImage } from '../redux/user/userActions';
 
 function ImageFileInput(props) {
@@ -22,34 +23,25 @@ function ImageFileInput(props) {
         } else {
             setPreviewImage(null);
         }
+        // eslint-disable-next-line
     }, [image]);
 
     return (
         <div>
             {previewImage ? (
-                <div style={{ position: 'relative' }}>
+                <div>
                     <ImageCropper src={previewImage} />
-                    <button
-                        className="add-image-btn"
-                        onClick={(event) => {
-                            event.preventDefault();
-                            setImage(null);
-                        }}
-                    >
-                        Remove Image
-                    </button>
+                    <AddRemoveImageButton
+                        callback={() => setImage(null)}
+                        textContent="Remove Image"
+                    />
                 </div>
 
             ) : (
-                <button
-                    className="add-image-btn"
-                    onClick={(event) => {
-                        event.preventDefault();
-                        fileInputRef.current.click();
-                    }}
-                >
-                    Add Image
-                </button>
+                <AddRemoveImageButton
+                    callback={() => fileInputRef.current.click()}
+                    textContent="Add Image"
+                />
             )}
             <input
                 type="file"
@@ -69,6 +61,11 @@ function ImageFileInput(props) {
         </div>
     );
 }
+
+ImageFileInput.propTypes = {
+    previewImage: PropTypes.string,
+    setPreviewImage: PropTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => {
     return {
