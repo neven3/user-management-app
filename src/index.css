@@ -232,7 +232,7 @@ main {
 }
 
 /* Cell phones portrait */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .content-container {
     box-shadow: none;
     padding: 2rem;
@@ -267,7 +267,7 @@ main {
 
 /* Tablets */
 @media screen
-  and (min-width: 401px)
+  and (min-width: 500px)
   and (max-width: 800px) {
   .user-list {
     grid-template-columns: repeat(3, 1fr);
