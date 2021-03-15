@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,7 +11,7 @@ import store from './Redux/store';
 function App() {
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Provider store={store}>
           <Navigation />
@@ -31,7 +31,7 @@ function App() {
           />
         </Provider>
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
