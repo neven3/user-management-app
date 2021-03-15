@@ -55,11 +55,13 @@ function CreateNewUserForm(props) {
                     name="email"
                     label="E-mail"
                 />
-                {!previewImage && (<FormControl
-                    type="text"
-                    name="avatar"
-                    label="Avatar URL"
-                />)}
+                {!previewImage && (
+                    <FormControl
+                        type="text"
+                        name="avatar"
+                        label="Avatar URL"
+                    />)
+                }
                 <ImagePreview />
                 <button className="submit-btn" type="submit">Create User</button>
             </Form>

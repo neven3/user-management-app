@@ -14,7 +14,6 @@ function ImageCropper(props) {
         });
     }, []);
 
-
     return (
         <div className="img-container">
             <img
